@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { customTheme } from "./theme";
+import {
+	ThemeProvider,
+	CSSReset,
+	Flex,
+	Slide,
+	useDisclosure,
+} from "@chakra-ui/core";
+import { HomePage } from "./Components/HomePage/HomePage";
+import { SideBar } from "./Components/SideBar/SideBar";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const [scrollPos, setScrollPos] = useState(0);
+
+	const handleScroll = () => {
+		const pos = window.pageYOffset;
+		setScrollPos(pos);
+	};
+
+	useEffect(() => {
+		window.addEventListener("scroll", handleScroll);
+		if (scrollPos >= 500) {
+			onOpen();
+		} else if (scrollPos < 500) {
+			onClose();
+		}
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	});
+
+	return (
+		<ThemeProvider theme={customTheme}>
+			<HomePage />
+			<Slide placement='left' timeout={500} in={isOpen}>
+				{(styles) => (
+					<Flex {...styles} zIndex={1000}>
+						<SideBar show={true} />
+					</Flex>
+				)}
+			</Slide>
+			<Flex></Flex>
+		</ThemeProvider>
+	);
 }
 
 export default App;
