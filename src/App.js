@@ -9,8 +9,10 @@ import {
 } from "@chakra-ui/core";
 import { HomePage } from "./Components/HomePage/HomePage";
 import { SideBar } from "./Components/SideBar/SideBar";
+import { AboutMe } from "./Components/AboutMe/AboutMe";
 
 function App() {
+	const [showSidebar, setShowSidebar] = useState(true);
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [scrollPos, setScrollPos] = useState(0);
 
@@ -37,11 +39,11 @@ function App() {
 			<Slide placement='left' timeout={500} in={isOpen}>
 				{(styles) => (
 					<Flex {...styles} zIndex={1000}>
-						<SideBar show={true} />
+						<SideBar show={showSidebar} />
 					</Flex>
 				)}
 			</Slide>
-			<Flex></Flex>
+			<AboutMe />
 		</ThemeProvider>
 	);
 }

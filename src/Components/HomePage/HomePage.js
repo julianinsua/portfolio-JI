@@ -14,13 +14,7 @@ export const HomePage = () => {
 	return (
 		<Flex>
 			<Flex>
-				<Image
-					src='/img/bg_img.jpg'
-					position='absolute'
-					zIndex={0}
-					height='100vh'
-					width='100%'
-				/>
+				<Image src='/img/bg_img.jpg' zIndex={0} height='100vh' width='100%' />
 				<Flex
 					position='absolute'
 					zIndex={1}

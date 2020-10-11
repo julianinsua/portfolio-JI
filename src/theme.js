@@ -32,6 +32,7 @@ export const customTheme = extendTheme({
 				m: "0",
 			},
 		},
+
 		Button: {
 			baseStyle: {
 				fontFamily: "Prosto One",
