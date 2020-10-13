@@ -6,7 +6,7 @@ import { AboutMeText } from "./AboutMeText";
 export const AboutMe = () => {
 	const theme = useTheme();
 	return (
-		<Flex height='100vh' bg='gray.701'>
+		<Flex height='100vh' bg='gray.701' name='aboutme'>
 			<Flex ml='4rem' justify='center' alignItems='center' direction='column'>
 				<Heading
 					as='h1'

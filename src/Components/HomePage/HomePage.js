@@ -8,11 +8,20 @@ import {
 	Text,
 	useTheme,
 } from "@chakra-ui/core";
+import { scroller } from "react-scroll";
 
 export const HomePage = () => {
 	const theme = useTheme();
+
+	const scrollTo = () => {
+		scroller.scrollTo("aboutme", {
+			duration: 800,
+			delay: 0,
+			smooth: "easeInOutQuart",
+		});
+	};
 	return (
-		<Flex>
+		<Flex name='home'>
 			<Flex>
 				<Image src='/img/bg_img.jpg' zIndex={0} height='100vh' width='100%' />
 				<Flex
@@ -56,7 +65,7 @@ export const HomePage = () => {
 					<Heading as='h1' fontSize={96} color='#21262E' mt={0}>
 						Julian Insua
 					</Heading>
-					<Button variant='purple' size='xl'>
+					<Button variant='purple' size='xl' onClick={() => scrollTo()}>
 						ABOUT ME
 					</Button>
 				</Flex>
