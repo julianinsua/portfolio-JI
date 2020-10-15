@@ -42,7 +42,7 @@ function App() {
 				<HomePage />
 				<Slide placement='left' timeout={500} in={isOpen}>
 					{(styles) => (
-						<Flex {...styles} zIndex={1000}>
+						<Flex {...styles} zIndex={1000} width='4rem'>
 							<SideBar show={showSidebar} />
 						</Flex>
 					)}
